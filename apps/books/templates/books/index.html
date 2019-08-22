@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <title>Read (All)</title>
+
+        <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/checkout/">
+
+        <!-- Bootstrap core CSS -->
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'main/css/bootstrap.css' %}">    
+        <script src="{% static 'main/js/bootstrap.js' %}"></script>
+
+        <!-- Custom styles for this template -->
+        <link href="form-validation.css" rel="stylesheet">
+    </head>
+    <body class="bg-light">
+        <nav class="navbar navbar-light bg-white w-50 mx-auto">
+            <a href="#" class="navbar-brand">Welcome, {{user.name}}!</a>
+            <form class="form-inline">
+                <div class="input-group">
+                    <a href="/books/add" class="mr-3"><u>Add Book and Review</u></a> 
+                    <a href="/login/logout"><u>Log out</u></a> 
+                </div>
+                </div>
+            </form>
+        </nav>
+        <div class="w-50 mx-auto mt-3">
+            <div class="col-md-6 d-inline-block align-top mr-4">
+                <h3 class="">Recent Book Reviews</h3>
+                {% for review in reviews %}
+                    <div class="pl-3">
+                        <div class="form-group">
+                            <a href="/books/{{review.book.id}}"><u>{{review.book.title}}</u></a> 
+                            <div class="">
+                                <p>Rating
+                                    {%if review.rating == 1 %}
+                                    &#9733;&#9734;&#9734;&#9734;&#9734;
+                                    {% endif %}
+                                    {%if review.rating == 2 %}
+                                    &#9733;&#9733;&#9734;&#9734;&#9734;
+                                    {% endif %}
+                                    {%if review.rating == 3 %}
+                                    &#9733;&#9733;&#9733;&#9734;&#9734;
+                                    {% endif %}
+                                    {%if review.rating == 4 %}
+                                    &#9733;&#9733;&#9733;&#9733;&#9734;
+                                    {% endif %}
+                                    {%if review.rating == 5 %}
+                                    &#9733;&#9733;&#9733;&#9733;&#9733;
+                                    {% endif %}
+                                </p>
+                                <p><a href="/users/num">{{review.reviewer.name}}</a> {{review.content}}</p>
+                                <p>Posted on {{review.created_at}}</p>
+                            </div> 
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="col-md-5 d-inline-block align-top ml-4">
+                <h3>Other Books with Reviews</h3>
+                <div class="border border-dark" style="height:200px;overflow-y:scroll;">
+                    {% for review in other_reviews %}
+                        <div class="mt-2 pl-3">
+                            <h5><a href="/books/{{review.book.id}}"><u>{{review.book.title}}</u></a></h5>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    </body>
+</html>
