@@ -9,7 +9,7 @@ itsdangerous==1.1.0
 Jinja2==2.10.1
 MarkupSafe==1.1.1
 mysql-connector-python==8.0.17
-numpy==1.17.0
+numpy==1.22.0
 opencv-python==4.1.0.25
 py3dns==3.2.0
 pycparser==2.19
